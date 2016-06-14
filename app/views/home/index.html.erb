@@ -1,5 +1,5 @@
 <%= form_tag({action: :upload}, multipart: true, id: "form_id") do %>
-  <%= file_field_tag 'input_data' %>
+  <%= file_field_tag 'input_data', {:title => "search"} %>
   <%= submit_tag "Calculate" %>
 <% end %>
 
@@ -11,5 +11,6 @@ jQuery(function(){
       alert('Please select a file');
     }     
   });
-})
+});
+$('input[type=file]').bootstrapFileInput();
 </script>
