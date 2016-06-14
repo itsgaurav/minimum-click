@@ -1,0 +1,15 @@
+<%= form_tag({action: :upload}, multipart: true, id: "form_id") do %>
+  <%= file_field_tag 'input_data' %>
+  <%= submit_tag "Calculate" %>
+<% end %>
+
+<script>
+jQuery(function(){
+  $('#form_id').submit(function (e) {
+    if ($(this).find('input[name="input_data"]').val() == '') { 
+      e.preventDefault();
+      alert('Please select a file');
+    }     
+  });
+})
+</script>
