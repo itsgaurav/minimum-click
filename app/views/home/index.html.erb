@@ -1,16 +1,54 @@
-<%= form_tag({action: :upload}, multipart: true, id: "form_id") do %>
-  <%= file_field_tag 'input_data', {:title => "search"} %>
-  <%= submit_tag "Calculate" %>
-<% end %>
+<div class="main-form">
+  <%= form_tag({action: :upload}, multipart: true, id: "form_id") do %>
+      <div class="form-group">
+        <%= label_tag :low_ch, "Lowest Channel:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= text_field_tag :low_ch, '', class: "form-control", placeholder: "Input lowest channel value" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag :high_ch, "Highest Channel:", class: "col-md-4 control-label", placeholder: "Input highest channel value" %>
+        <div class="col-md-8">
+          <%= text_field_tag :high_ch, '', class: "form-control", placeholder: "Input highest channel value" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :blocked_list, "List of blocked channel:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= text_field_tag :blocked_list, '', class: "form-control", placeholder: "Space seprated list of blocked channels" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag :view_sequence, "Sequence in which to view channel:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= text_field_tag :view_sequence, '', class: "form-control", placeholder: "Space seprated list of view channels" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= radio_button_tag :input_type, 'file', :checked => true %> Take input from a file.
+        <%= radio_button_tag :input_type, 'html' %> Take input from a HTML element.
+      </div>
+			<div class="form-group">
+      	<%= file_field_tag 'input_data', {:title => "select a file", :class => "file-input"} %>
+        <%= submit_tag "Submit", class: "btn btn-default btn-primary " %>  
+      </div>
+  <% end %>
+</div>  
 
 <script>
 jQuery(function(){
   $('#form_id').submit(function (e) {
-    if ($(this).find('input[name="input_data"]').val() == '') { 
+    if ($(this).find('input[name="input_data"]').val() == '' &&  $( "input:radio[name=input_type]:checked" ).val()=="file") { 
       e.preventDefault();
       alert('Please select a file');
     }     
   });
 });
+
 $('input[type=file]').bootstrapFileInput();
+
+$('input[type="radio"]').click(function() {
+  $('.file-input')[$( "input:radio[name=input_type]:checked" ).val()=="file" ? "show" : "hide"]();
+});
 </script>

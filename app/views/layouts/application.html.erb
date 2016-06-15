@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>MinClicks</title>
+  <%= favicon_link_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,9 +10,6 @@
 <body>
   <% if flash.notice %>
       <p class="alert alert-success"><%= flash.notice %></p>
-  <% end %>
-  <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
   <% end %>
 <%= yield %>
 
