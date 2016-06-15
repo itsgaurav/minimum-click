@@ -1,2 +1,4 @@
-Minimum no. of button clicks needed are : <%= @result %></br>
-<%= button_to "Try Again", root_path, :method => "get", :class => "btn btn-primary" %>
+<div class="result-container">
+	<span>Minimum no. of button clicks needed are : <%= @result %></span></br>
+	<%= link_to "Try Again", root_path,  :class => "btn btn-primary" %>
+</div>

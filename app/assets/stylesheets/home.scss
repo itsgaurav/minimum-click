@@ -6,3 +6,21 @@
 	width: 50%;
 	margin: 0 auto;
 }
+
+.result-container{
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	margin-top:10%;
+  border: 1px solid #ccc;
+  padding: 10px;
+
+	span{
+		font-size: 14px;
+
+	}
+
+	a{
+		margin: 10px;
+	}
+}
